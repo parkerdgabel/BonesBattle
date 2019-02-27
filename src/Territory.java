@@ -7,7 +7,6 @@ public class Territory {
     private int dice;
     private int idNum;
     private Player owner;
-    private boolean inactive;
 
     /** Constructor that accepts only a map reference.
      * @param map       The map for the game.
@@ -16,7 +15,6 @@ public class Territory {
         this.map = map;
         this.dice = -1;
         this.owner = null;
-        this.inactive = false;
     }
 
     /** Constructor that accepts all field arguments
@@ -92,21 +90,14 @@ public class Territory {
      * @return      The row of the territory
      */
     public int getRow() {
-        return Math.floorDiv(this.idNum, map.getROWS());
+        return Math.floorDiv(this.idNum, this.map.getCOLUMNS());
     }
 
     /** Returns the column of the territory
      * @return      The column of the territory
      */
     public int getCol() {
-        return this.idNum % map.getCOLUMNS();
+        return this.idNum % map.getROWS();
     }
 
-    public boolean isInactive() {
-        return inactive;
-    }
-
-    public void setInactive(boolean inactive) {
-        this.inactive = inactive;
-    }
 }
